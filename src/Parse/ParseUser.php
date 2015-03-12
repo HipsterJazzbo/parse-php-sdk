@@ -14,7 +14,7 @@ class ParseUser extends ParseObject
   /**
    * @var ParseUser The currently logged-in user.
    */
-  private static $currentUser = null;
+  protected static $currentUser = null;
 
   /**
    * @var string The sessionToken for an authenticated user.
@@ -181,7 +181,7 @@ class ParseUser extends ParseObject
    *
    * @return null
    */
-  private function handleSaveResult($makeCurrent = false)
+  protected function handleSaveResult($makeCurrent = false)
   {
       if (isset($this->serverData['password'])) {
           unset($this->serverData['password']);
