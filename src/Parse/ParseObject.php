@@ -1219,6 +1219,23 @@ class ParseObject implements Encodable
     }
 
     /**
+     * Get the registered subclass for a Parse class, or a generic ParseObject
+     * if no subclass is registered.
+     *
+     * @param $parseClassName
+     *
+     * @return ParseObject
+     */
+    public static function getRegisteredSubclass($parseClassName)
+    {
+        if (self::hasRegisteredSubclass($parseClassName)) {
+            return self::$registeredSubclasses[$parseClassName];
+        }
+
+        return new static($parseClassName);
+    }
+
+    /**
      * Creates a ParseQuery for the subclass of ParseObject.
      * Cannot be called on the base class ParseObject.
      *
